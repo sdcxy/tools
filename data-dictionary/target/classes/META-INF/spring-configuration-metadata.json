@@ -1,0 +1,114 @@
+{
+  "groups": [
+    {
+      "name": "data-dictionary",
+      "type": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties"
+    },
+    {
+      "name": "data-dictionary.pdf",
+      "type": "com.github.sdcxy.auto.PdfPageProperties",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "data-dictionary.data-base",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "data-dictionary.db-type",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": "mysql"
+    },
+    {
+      "name": "data-dictionary.driver",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "data-dictionary.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": true
+    },
+    {
+      "name": "data-dictionary.ip",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": "127.0.0.1"
+    },
+    {
+      "name": "data-dictionary.password",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "data-dictionary.pdf.author",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties",
+      "defaultValue": "sdcxy"
+    },
+    {
+      "name": "data-dictionary.pdf.back-color",
+      "type": "com.itextpdf.text.BaseColor",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties"
+    },
+    {
+      "name": "data-dictionary.pdf.font-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties",
+      "defaultValue": 12
+    },
+    {
+      "name": "data-dictionary.pdf.page-size",
+      "type": "com.itextpdf.text.Rectangle",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties"
+    },
+    {
+      "name": "data-dictionary.pdf.table-cell-color",
+      "type": "com.itextpdf.text.BaseColor",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties"
+    },
+    {
+      "name": "data-dictionary.pdf.table-color",
+      "type": "com.itextpdf.text.BaseColor",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties"
+    },
+    {
+      "name": "data-dictionary.pdf.table-title-color",
+      "type": "com.itextpdf.text.BaseColor",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties"
+    },
+    {
+      "name": "data-dictionary.pdf.title",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.PdfPageProperties",
+      "defaultValue": "DataBase-Dictionary"
+    },
+    {
+      "name": "data-dictionary.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": 3306
+    },
+    {
+      "name": "data-dictionary.url",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": ""
+    },
+    {
+      "name": "data-dictionary.username",
+      "type": "java.lang.String",
+      "sourceType": "com.github.sdcxy.auto.DataDictionaryProperties",
+      "defaultValue": ""
+    }
+  ],
+  "hints": []
+}

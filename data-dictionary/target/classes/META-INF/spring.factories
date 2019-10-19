@@ -1,0 +1,4 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.sdcxy.auto.DataDictionaryAutoConfigure,\
+  com.github.sdcxy.auto.PdfPageAutoConfigure,\
+  com.github.sdcxy.auto.FileServiceAutoConfigure
