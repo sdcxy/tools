@@ -1,4 +1,4 @@
-package com.github.sdcxy.service;
+package com.github.sdcxy.service.file;
 
 import freemarker.template.Template;
 
@@ -12,6 +12,7 @@ import java.util.Map;
  * @Description TODO
  * @Author lxx
  * @Date 2019/10/19 12:21
+ * {@link AbstractFileServiceFactory}
  **/
 public class HtmlFileService extends AbstractFileServiceFactory {
 

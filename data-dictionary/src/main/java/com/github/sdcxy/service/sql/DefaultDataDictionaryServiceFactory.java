@@ -1,4 +1,4 @@
-package com.github.sdcxy.service;
+package com.github.sdcxy.service.sql;
 
 import com.github.sdcxy.entity.DataDictionaryDataSource;
 import com.github.sdcxy.entity.Table;

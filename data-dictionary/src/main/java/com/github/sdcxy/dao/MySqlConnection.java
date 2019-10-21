@@ -3,6 +3,8 @@ package com.github.sdcxy.dao;
 import com.github.sdcxy.constants.DataBaseConstants;
 import com.github.sdcxy.enums.DBDriver;
 import com.github.sdcxy.enums.DBUrl;
+import com.github.sdcxy.exception.ExceptionEnum;
+import com.github.sdcxy.exception.GlobalException;
 import lombok.extern.slf4j.Slf4j;
 
 import java.sql.*;
@@ -13,6 +15,7 @@ import java.util.Properties;
  * @Description TODO
  * @Author lxx
  * @Date 2019/10/14 14:05
+ * {@link AbstractDataBaseConnectionFactory}
  **/
 @Slf4j
 public class MySqlConnection extends AbstractDataBaseConnectionFactory {
@@ -25,7 +28,7 @@ public class MySqlConnection extends AbstractDataBaseConnectionFactory {
      * @param username 数据库用户名
      * @param password 数据库密码
      * @return 返回Connection
-     * {@link DataBaseConnectionFactory}
+     * {@link com.github.sdcxy.service.sql.MySqlDataDictionary}
      */
     private Connection getConnection(String ip, int port, String dataBaseName, String username, String password) {
         Connection conn = null;
@@ -49,6 +52,7 @@ public class MySqlConnection extends AbstractDataBaseConnectionFactory {
             }
         } catch (Exception e) {
             log.error("数据库链接异常:[{}]",e.getMessage());
+            throw new GlobalException(ExceptionEnum.MYSQL_CONNECTION_EXCEPTION.getCode(),ExceptionEnum.MYSQL_CONNECTION_EXCEPTION.getMsg());
         }
         return conn;
     }

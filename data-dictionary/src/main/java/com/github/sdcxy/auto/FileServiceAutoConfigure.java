@@ -1,9 +1,9 @@
 package com.github.sdcxy.auto;
 
-import com.github.sdcxy.service.AbstractFileServiceFactory;
-import com.github.sdcxy.service.HtmlFileService;
-import com.github.sdcxy.service.PdfFileService;
-import com.github.sdcxy.service.WordFileService;
+import com.github.sdcxy.service.file.AbstractFileServiceFactory;
+import com.github.sdcxy.service.file.HtmlFileService;
+import com.github.sdcxy.service.file.PdfFileService;
+import com.github.sdcxy.service.file.WordFileService;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;

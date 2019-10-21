@@ -17,6 +17,8 @@ public enum DBType {
 
     DB2("DB2"),
 
+    POSTGRE_SQL("PostgreSQL")
+
     ;
     private String dbName;
 

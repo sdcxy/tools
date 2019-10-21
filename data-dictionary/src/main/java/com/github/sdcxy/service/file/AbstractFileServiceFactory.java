@@ -1,4 +1,4 @@
-package com.github.sdcxy.service;
+package com.github.sdcxy.service.file;
 
 import com.github.sdcxy.constants.FileConstants;
 import freemarker.template.Configuration;
@@ -14,6 +14,9 @@ import java.util.Map;
  * @Description TODO
  * @Author lxx
  * @Date 2019/10/18 0:26
+ * {@link PdfFileService}
+ * {@link WordFileService}
+ * {@link HtmlFileService}
  **/
 public abstract class AbstractFileServiceFactory implements FileServiceFactory{
 

@@ -15,4 +15,6 @@ public class SignConstants {
     public static final String COLON = ":";
     public static final String LEFT_BRACKETS = "(";
     public static final String RIGHT_BRACKETS = ")";
+    public static final String TICK = "✔";
+    public static final String CROSS = "×";
 }

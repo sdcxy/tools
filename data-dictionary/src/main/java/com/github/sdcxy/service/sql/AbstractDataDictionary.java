@@ -1,10 +1,11 @@
-package com.github.sdcxy.service;
+package com.github.sdcxy.service.sql;
 
 import com.github.sdcxy.constants.DataBaseConstants;
 import com.github.sdcxy.constants.SignConstants;
 import com.github.sdcxy.entity.Column;
 import com.github.sdcxy.entity.DataDictionaryDataSource;
 import com.github.sdcxy.entity.Table;
+import com.github.sdcxy.enums.DBType;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
@@ -20,11 +21,20 @@ import java.util.List;
  * @Description TODO
  * @Author lxx
  * @Date 2019/10/14 14:46
+ * {@link MySqlDataDictionary}
+ * {@link SqlServerDataDictionary}
+ * {@link PostgreSqlDataDictionary}
  **/
 @Slf4j
 public abstract class AbstractDataDictionary<T> implements DataDictionary{
 
-
+    /**
+     * 获取数据库表结构信息 保存为List<Table>
+     * @param conn
+     * @param dataSource
+     * @param tableNames
+     * @return
+     */
     protected List<Table> getTableList(Connection conn, DataDictionaryDataSource dataSource, String tableNames){
         DatabaseMetaData databaseMetaData;
         ResultSet table_rs = null;
@@ -36,9 +46,17 @@ public abstract class AbstractDataDictionary<T> implements DataDictionary{
         try{
             databaseMetaData = conn.getMetaData();
             if (tableNames == null || tableNames.equals(SignConstants.NULL_STRING_SIGN)){
-                table_rs = databaseMetaData.getTables(dataSource.getDataBase(), SignConstants.PERCENTAGE_SIGN,SignConstants.PERCENTAGE_SIGN,new String[]{DataBaseConstants.TABLE});
+               if (dataSource.getDbType().equals(DBType.ORACLE.getDbName())){
+                   table_rs = databaseMetaData.getTables(null, dataSource.getUsername().toUpperCase(),SignConstants.PERCENTAGE_SIGN,new String[]{DataBaseConstants.TABLE});
+               }else {
+                   table_rs = databaseMetaData.getTables(dataSource.getDataBase(), SignConstants.PERCENTAGE_SIGN,SignConstants.PERCENTAGE_SIGN,new String[]{DataBaseConstants.TABLE});
+               }
             }else {
-                table_rs = databaseMetaData.getTables(dataSource.getDataBase(), SignConstants.PERCENTAGE_SIGN,tableNames,new String[]{DataBaseConstants.TABLE});
+                if (dataSource.getDbType().equals(DBType.ORACLE.getDbName())){
+                    table_rs = databaseMetaData.getTables(null, dataSource.getUsername().toUpperCase(),tableNames,new String[]{DataBaseConstants.TABLE});
+                }else {
+                    table_rs = databaseMetaData.getTables(dataSource.getDataBase(), SignConstants.PERCENTAGE_SIGN,tableNames,new String[]{DataBaseConstants.TABLE});
+                }
             }
             int i = 1;
             while (table_rs.next()){

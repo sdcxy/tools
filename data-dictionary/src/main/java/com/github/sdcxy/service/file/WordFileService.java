@@ -1,4 +1,4 @@
-package com.github.sdcxy.service;
+package com.github.sdcxy.service.file;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.PageSize;
@@ -15,6 +15,7 @@ import java.util.Map;
  * @Description TODO
  * @Author lxx
  * @Date 2019/10/18 0:32
+ * {@link AbstractFileServiceFactory}
  **/
 public class WordFileService extends AbstractFileServiceFactory {
 

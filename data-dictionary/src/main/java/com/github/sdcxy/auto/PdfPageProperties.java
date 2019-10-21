@@ -1,6 +1,7 @@
 package com.github.sdcxy.auto;
 
 import com.github.sdcxy.constants.DataDictionaryConstants;
+import com.github.sdcxy.constants.FileConstants;
 import com.github.sdcxy.constants.SignConstants;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.PageSize;
@@ -15,7 +16,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * @Date 2019/10/15 11:00
  **/
 @Data
-@ConfigurationProperties(prefix = DataDictionaryConstants.PROJECT_PREFIX + SignConstants.POINT + DataDictionaryConstants.PDF)
+@ConfigurationProperties(prefix = DataDictionaryConstants.PROJECT_PREFIX + SignConstants.POINT + FileConstants.PDF)
 public class PdfPageProperties {
 
     private String title = "DataBase-Dictionary";

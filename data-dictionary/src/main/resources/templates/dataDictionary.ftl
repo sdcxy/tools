@@ -11,7 +11,7 @@
 </head>
 <body>
     <div id="dataDictionary" class="bg wrapper-flex wrapper-flex-justify-content-center">
-        <el-card style="width: 80%">
+        <el-card style="width: 80%" >
             <div slot="header" >
                 <el-row>
                     <el-page-header style="font-weight: bolder;font-size: 24px"  @back="goBack" content="数据字典"></el-page-header>
@@ -50,6 +50,7 @@
             <#if tables?exists>
                 <#if (tables?size>0) >
                 <#list tables as table >
+                    <el-divider content-position="center">${table.TableName}</el-divider>
                     <span style="font-weight: bolder">${table.TableSerial}、</span> <span id="${table.TableName}" style="font-size: 20px">${table.TableName}  </span><span  style="font-size: 20px;margin-left: 10px">${table.TableRemark}</span>
                         <table class="table table-bordered table-hover" style="width: 100%">
                             <thead>

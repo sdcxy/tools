@@ -1,4 +1,4 @@
-package com.github.sdcxy.service;
+package com.github.sdcxy.service.sql;
 
 import com.github.sdcxy.constants.DataBaseConstants;
 import com.github.sdcxy.constants.MapConstants;
@@ -33,6 +33,12 @@ public class DefaultDataDictionaryService implements DefaultDataDictionaryServic
     private SqlServerDataDictionary sqlServerDataDictionary;
 
     @Autowired
+    private PostgreSqlDataDictionary postgreSqlDataDictionary;
+
+    @Autowired
+    private OracleDataDictionary oracleDataDictionary;
+
+    @Autowired
     private DataDictionaryDataSource dataSource;
 
 
@@ -51,10 +57,13 @@ public class DefaultDataDictionaryService implements DefaultDataDictionaryServic
             list = sqlServerDataDictionary.getTableInfo(tableName);
         }
         if (dataSource.getDbType().equals(DBType.ORACLE.getDbName())){
-
+            list = oracleDataDictionary.getTableInfo(tableName);
         }
         if (dataSource.getDbType().equals(DBType.DB2.getDbName())){
 
+        }
+        if (dataSource.getDbType().equals(DBType.POSTGRE_SQL.getDbName())){
+            list = postgreSqlDataDictionary.getTableInfo(tableName);
         }
         return list;
     }
@@ -75,7 +84,9 @@ public class DefaultDataDictionaryService implements DefaultDataDictionaryServic
         List<String> list = new ArrayList<>();
         if (tableList != null ){
             for (Table table : tableList) {
-                list.add(table.getTableName());
+                String tableName = table.getTableName();
+                if (tableName.equals("trace_xe_action_map")||tableName.equals("trace_xe_event_map")){break;}
+                list.add(tableName);
             }
         }
         list.add("All");
@@ -88,7 +99,10 @@ public class DefaultDataDictionaryService implements DefaultDataDictionaryServic
      * @return
      */
     @Override
-    public   List<Map<String,Object>> ListToMap(List<Table> tableList){
+    public  List<Map<String,Object>> ListToMap(List<Table> tableList){
+        if (dataSource.getDbType().equals(DBType.SQLSERVER.getDbName())){
+            return sqlServerDataDictionary.getSqlServerTableInfo(tableList);
+        }
         Map<String,Object> TableMap;
         Map<String,Object> ColumnMap;
         List<Map<String,Object>> TableList = new ArrayList<>();
@@ -147,7 +161,28 @@ public class DefaultDataDictionaryService implements DefaultDataDictionaryServic
                         .replace(DataBaseConstants.IP,dataDictionaryDataSource.getIp())
                         .replace(DataBaseConstants.PORT,String.valueOf(dataDictionaryDataSource.getPort()))
                         .replace(DataBaseConstants.DATABASE,dataDictionaryDataSource.getDataBase());
-                driver = DBDriver.SQLSERVER_DRIVER.getDriverName();
+                driver = DBDriver.SQLSERVER_DRIVER_PLUS.getDriverName();
+            }
+            if (DBType.ORACLE.getDbName().equals(dbType)){
+                url = DBUrl.ORACLE_URL.getUrl()
+                        .replace(DataBaseConstants.IP,dataDictionaryDataSource.getIp())
+                        .replace(DataBaseConstants.PORT,String.valueOf(dataDictionaryDataSource.getPort()))
+                        .replace(DataBaseConstants.DATABASE,dataDictionaryDataSource.getDataBase());
+                driver = DBDriver.ORACLE_DRIVER.getDriverName();
+            }
+            if (DBType.DB2.getDbName().equals(dbType)){
+                url = DBUrl.DB2_URL.getUrl()
+                        .replace(DataBaseConstants.IP,dataDictionaryDataSource.getIp())
+                        .replace(DataBaseConstants.PORT,String.valueOf(dataDictionaryDataSource.getPort()))
+                        .replace(DataBaseConstants.DATABASE,dataDictionaryDataSource.getDataBase());
+                driver = DBDriver.DB2_DRIVER.getDriverName();
+            }
+            if (DBType.POSTGRE_SQL.getDbName().equals(dbType)){
+                url = DBUrl.POSTGRESQL_URL.getUrl()
+                        .replace(DataBaseConstants.IP,dataDictionaryDataSource.getIp())
+                        .replace(DataBaseConstants.PORT,String.valueOf(dataDictionaryDataSource.getPort()))
+                        .replace(DataBaseConstants.DATABASE,dataDictionaryDataSource.getDataBase());
+                driver = DBDriver.POSTGRESQL_DRIVER.getDriverName();
             }
             BeanUtils.copyProperties(dataDictionaryDataSource,dataSource);
             dataSource.setUrl(url);

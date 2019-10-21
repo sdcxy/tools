@@ -3,14 +3,9 @@ package com.github.sdcxy.auto;
 
 import com.github.sdcxy.constants.DataBaseConstants;
 import com.github.sdcxy.constants.DataDictionaryConstants;
-import com.github.sdcxy.dao.AbstractDataBaseConnectionFactory;
-import com.github.sdcxy.dao.MySqlConnection;
-import com.github.sdcxy.dao.SqlServerConnection;
+import com.github.sdcxy.dao.*;
 import com.github.sdcxy.entity.DataDictionaryDataSource;
-import com.github.sdcxy.service.DataDictionary;
-import com.github.sdcxy.service.DefaultDataDictionaryService;
-import com.github.sdcxy.service.MySqlDataDictionary;
-import com.github.sdcxy.service.SqlServerDataDictionary;
+import com.github.sdcxy.service.sql.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -71,6 +66,37 @@ public class DataDictionaryAutoConfigure {
     SqlServerDataDictionary sqlServerDataDictionary(){
         return new SqlServerDataDictionary();
     }
+
+
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnClass(value = AbstractDataBaseConnectionFactory.class)
+    PostgreSqlConnection postgreSqlConnection(){
+        return new PostgreSqlConnection();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnClass(value = PostgreSqlConnection.class)
+    PostgreSqlDataDictionary postgreSqlDataDictionary(){
+        return new PostgreSqlDataDictionary();
+    }
+
+
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnClass(value = AbstractDataBaseConnectionFactory.class)
+    OracleConnection oracleConnection(){
+        return new OracleConnection();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnClass(value = PostgreSqlConnection.class)
+    OracleDataDictionary oracleDataDictionary(){
+        return new OracleDataDictionary();
+    }
+
 
     @Bean
     @ConditionalOnMissingBean

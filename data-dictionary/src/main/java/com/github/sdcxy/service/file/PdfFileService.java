@@ -1,4 +1,4 @@
-package com.github.sdcxy.service;
+package com.github.sdcxy.service.file;
 
 import com.github.sdcxy.config.PdfPageConfig;
 import com.github.sdcxy.constants.MapConstants;
@@ -23,6 +23,7 @@ import java.util.Map;
  * @Description TODO
  * @Author lxx
  * @Date 2019/10/18 1:08
+ * {@link AbstractFileServiceFactory}
  **/
 public class PdfFileService extends AbstractFileServiceFactory {
 
