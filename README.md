@@ -32,3 +32,22 @@
     ![](https://raw.githubusercontent.com/sdcxy/cdn_repository/master/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8/%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E9%A6%96%E9%A1%B5.png)
     ![](https://raw.githubusercontent.com/sdcxy/cdn_repository/master/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8/%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E9%80%89%E6%8B%A9%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8.png)
     ![](https://raw.githubusercontent.com/sdcxy/cdn_repository/master/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8/%E7%94%9F%E6%88%90%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8.png)
+
+
+### 版本说明
+1.  0.0.1
+    ```
+        该版本只支持mysql,sqlserver生成数据字典,
+        支持单表生成或全部表生成(多表生成后续会增加)
+        支持打印/预览/下载pdf、生成word、预览html
+        sqlserver现仅支持SQL2005以上版本(后续会增加更多的兼容性)
+    ```
+2.  0.0.2
+    ```
+        *   增加了sqlserver注释生成功能(上一版本只支持mysql)
+        *   增加对PostgreSQL数据库支持
+        *   增加对Oracle快捷版数据库支持
+        *   显示页面增加对Oracle数据库实例选择或编辑功能
+        *   后台增加数据库连接异常处理
+        *   前端页面增加数据库连接操作判断
+    ```
