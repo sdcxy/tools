@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.github.sdcxy.common.autoconfigure.HttpAutoConfigure,\
+  com.github.sdcxy.common.autoconfigure.DateAutoConfigure,\
+  com.github.sdcxy.common.autoconfigure.ConfigurationAutoConfigure,\
+  com.github.sdcxy.common.autoconfigure.EncryptAutoConfigure
