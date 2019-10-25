@@ -6,5 +6,4 @@ public interface DataDictionary<T> {
 
     List<T> getTableInfo(String tableNames);
 
-
 }

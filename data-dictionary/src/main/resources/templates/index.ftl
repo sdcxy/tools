@@ -180,12 +180,20 @@
                 }
                 var len = app.dBForm.tableNameList.length;
                 if (len > 80){
-                    app.$message.success("正在创建"+len+"个表数据,查询和创建时间会比较长,请稍等!...");
+                    if (this.dBForm.tableName !== 'All'){
+                        app.$message.success("正在创建"+this.dBForm.tableName+"的表数据,请稍等!...");
+                    } else {
+                        app.$message.success("正在创建"+len+"个表数据,查询和创建时间会比较长,请稍等!...");
+                    }
                     setTimeout(function () {
                         loading.close();
                     },60000);
                 }else{
-                    app.$message.success("正在创建"+len+"个表数据,请稍等!....");
+                    if (this.dBForm.tableName !== 'All'){
+                        app.$message.success("正在创建"+this.dBForm.tableName+"的表数据,请稍等!...");
+                    }else{
+                        app.$message.success("正在创建"+len+"个表数据,请稍等!....");
+                    }
                     setTimeout(function () {
                         loading.close();
                     },30000);

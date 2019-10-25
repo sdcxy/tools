@@ -4,6 +4,7 @@ import com.github.sdcxy.constants.FileConstants;
 import com.github.sdcxy.constants.MapConstants;
 import com.github.sdcxy.entity.DataDictionaryDataSource;
 import com.github.sdcxy.entity.Table;
+import com.github.sdcxy.enums.DBType;
 import com.github.sdcxy.service.sql.DefaultDataDictionaryService;
 import com.github.sdcxy.service.file.HtmlFileService;
 import com.github.sdcxy.service.file.PdfFileService;
@@ -77,7 +78,11 @@ public class DataDictionaryController {
         tableNameList = dataDictionaryService.getTableNames(tableList);
         map.addAttribute(MapConstants.TABLES,mapList);
         map.addAttribute(MapConstants.TABLE_NAMES,tableNameList);
-        map.addAttribute(MapConstants.DATABASE_NAME,dataSource.getDataBase());
+        if (dataSource.getDbType().equals(DBType.ORACLE.getDbName())){
+            map.addAttribute(MapConstants.DATABASE_NAME,dataSource.getUsername());
+        }else{
+            map.addAttribute(MapConstants.DATABASE_NAME,dataSource.getDataBase());
+        }
         // 写入文件到本地
 //        wordFileService.saveFile(map);
         return "dataDictionary";
@@ -88,8 +93,12 @@ public class DataDictionaryController {
     public Object download(String type, HttpServletResponse response){
         Map<String,Object> map = new HashMap<>();
         map.put(MapConstants.TABLES,mapList);
-        map.put(MapConstants.DATABASE_NAME,dataSource.getDataBase());
         map.put(MapConstants.TABLE_NAMES,tableNameList);
+        if (dataSource.getDbType().equals(DBType.ORACLE.getDbName())){
+            map.put(MapConstants.DATABASE_NAME,dataSource.getUsername());
+        }else{
+            map.put(MapConstants.DATABASE_NAME,dataSource.getDataBase());
+        }
         String resultStr = null;
         // 传送文件信息
         if (type.equals(FileConstants.WORD)){

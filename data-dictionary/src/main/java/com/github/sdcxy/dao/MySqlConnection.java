@@ -61,5 +61,4 @@ public class MySqlConnection extends AbstractDataBaseConnectionFactory {
     public Connection getConnection(){
         return getConnection(dataSource.getIp(), dataSource.getPort(), dataSource.getDataBase(), dataSource.getUsername(), dataSource.getPassword());
     }
-
 }

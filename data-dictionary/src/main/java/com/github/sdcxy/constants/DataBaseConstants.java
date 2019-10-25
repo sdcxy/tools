@@ -17,6 +17,7 @@ public class DataBaseConstants {
 
     //数据库
     public static final String TABLE = "TABLE";
+    public static final String VIEW = "VIEW";
     public static final String TABLE_NAME = "TABLE_NAME";
     public static final String TABLE_REMARKS = "REMARKS";
     public static final String TABLE_PRIMARYKEY_NAME = "PK_NAME";

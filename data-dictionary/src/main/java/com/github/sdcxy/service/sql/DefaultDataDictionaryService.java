@@ -39,6 +39,9 @@ public class DefaultDataDictionaryService implements DefaultDataDictionaryServic
     private OracleDataDictionary oracleDataDictionary;
 
     @Autowired
+    private DB2DataDictionary db2DataDictionary;
+
+    @Autowired
     private DataDictionaryDataSource dataSource;
 
 
@@ -60,7 +63,7 @@ public class DefaultDataDictionaryService implements DefaultDataDictionaryServic
             list = oracleDataDictionary.getTableInfo(tableName);
         }
         if (dataSource.getDbType().equals(DBType.DB2.getDbName())){
-
+            list = db2DataDictionary.getTableInfo(tableName);
         }
         if (dataSource.getDbType().equals(DBType.POSTGRE_SQL.getDbName())){
             list = postgreSqlDataDictionary.getTableInfo(tableName);

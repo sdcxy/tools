@@ -6,7 +6,7 @@
 
     <groupId>com.github.sdcxy</groupId>
     <artifactId>data-dictionary</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
 
     <name>data-dictionary</name>
     <description>这是一个数据字典的工具类</description>
@@ -61,11 +61,9 @@
         <apache.lang3.version>3.9</apache.lang3.version>
         <!--数据库-->
         <mysql.version>5.1.47</mysql.version>
-        <sqlserver.version>4.0</sqlserver.version>
         <mssql.jdbc.version>7.2.2.jre8</mssql.jdbc.version>
         <postgreSql.version>42.2.8</postgreSql.version>
         <oracle.version>12.1.0.2</oracle.version>
-
     </properties>
 
     <dependencyManagement>
@@ -186,12 +184,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!--添加日志支持-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-log4j2</artifactId>
-        </dependency>
-
         <!--工具类-->
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -300,5 +292,14 @@
             </build>
         </profile>
     </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

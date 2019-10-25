@@ -100,6 +100,21 @@ public class DataDictionaryAutoConfigure {
 
     @Bean
     @ConditionalOnMissingBean
+    @ConditionalOnClass(value = AbstractDataBaseConnectionFactory.class)
+    DB2Connection db2Connection(){
+        return new DB2Connection();
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    @ConditionalOnClass(value = PostgreSqlConnection.class)
+    DB2DataDictionary db2DataDictionary(){
+        return new DB2DataDictionary();
+    }
+
+
+    @Bean
+    @ConditionalOnMissingBean
     DefaultDataDictionaryService defaultDataDictionaryService(){
         return new DefaultDataDictionaryService();
     }

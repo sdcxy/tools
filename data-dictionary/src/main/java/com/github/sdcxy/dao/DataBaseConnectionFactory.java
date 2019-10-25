@@ -12,6 +12,5 @@ import java.sql.Connection;
  **/
 public interface DataBaseConnectionFactory {
     // 获取数据库连接
-//    Connection getConnection(String ip,int port,String dataBaseName,String username,String password);
     Connection getConnection();
 }
